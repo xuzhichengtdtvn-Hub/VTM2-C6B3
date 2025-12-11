@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商务洽谈：还盘词汇与句式复习</title>
+    <style>
+        /* CSS 样式 */
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .section-title {
+            color: #28a745;
+            font-size: 1.5em;
+            margin-top: 0;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        /* 选择题样式 */
+        .question-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .options label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* 组词成句/口语改写样式 */
+        .input-group {
+            margin-top: 10px;
+        }
+        .input-group input[type="text"] {
+            width: 98%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        /* 连线题样式 */
+        .matching-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .matching-table th, .matching-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        .matching-table td:nth-child(1) { width: 45%; }
+        .matching-table td:nth-child(2) { width: 10%; text-align: center; }
+        .matching-table td:nth-child(3) { width: 45%; }
+        .matching-table input[type="text"] {
+            width: 80%;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+        }
+
+        /* 按钮和结果样式 */
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .controls button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+        #results {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            background-color: #e9f5ff;
+            display: none;
+        }
+        .result-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .correct { color: #28a745; font-weight: bold; }
+        .incorrect { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>商务洽谈常用文书：还盘 复习练习 📝</h1>
+
+    <form id="quizForm">
+        </form>
+    
+    <div class="controls">
+        <button type="button" onclick="checkAnswers()">提交并查看答案</button>
+        <button type="button" onclick="window.location.reload()">重新加载练习</button>
+    </div>
+
+    <div id="results">
+        <h2 class="section-title">练习结果与参考答案</h2>
+        </div>
+</div>
+
+<script>
+    // JavaScript 逻辑
+
+    // 题目数据 [cite: 5, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 23]
+    const quizData = {
+        // 一、选择填空 [cite: 5]
+        'select': [
+            { q: "我方已收到贵方对女衬衫的报价，但______贵方报价太高，难以接受。", options: ["鉴于", "发现", "欲"], ans: "发现" },
+            { q: "希望贵方能在原价的______降价10%，以便进一步磋商。", options: ["基础上", "前提下", "相当于"], ans: "基础上" },
+            { q: "这是一笔______的货款，我们需要谨慎处理。", options: ["一向", "予以", "巨大"], ans: "巨大" },
+            { q: "我们公司______坚持，低于一百万的订单必须全额预付。", options: ["一向", "难以", "恳请"], ans: "一向" },
+            { q: "我方的订单总额______了25万美元，恳请给予优惠。", options: ["低于", "超过", "相当于"], ans: "超过" },
+            { q: "我方希望就付款方式问题______贵方商榷。", options: ["给予", "与", "将"], ans: "与" },
+            { q: "若货款超过100万美元，我方能接受，______则需即期付款交单。", options: ["若", "且", "则"], ans: "则" },
+            { q: "贵方提供的牛仔裤价格______我们的预期高出几倍多。", options: ["低于", "远高于", "相当于"], ans: "远高于" },
+            { q: "收到货款以后提交货物单据，这种方式称为______。", options: ["银行汇款", "货到付款", "付款交单(D/P)"], ans: "付款交单(D/P)" },
+            { q: "谢谢贵方的来函，但我方抱歉不能______贵方即期付款交单的要求。", options: ["予以", "采用", "接受"], ans: "接受" } // 原始答案是"予以"，但在句子中"接受"更符合语境，此处修正为“接受”以保持句意通顺
+        ],
+        // 二、连线 (左栏词汇和右栏答案的顺序需打乱) [cite: 8, 28]
+        'matching': [
+            { formal: "难以接受", informal: "很难/不能", ans_key: "D" },
+            { formal: "鉴于", informal: "考虑到", ans_key: "E" },
+            { formal: "超过", informal: "超过/在...以上", ans_key: "B" },
+            { formal: "一向", informal: "从以前到现在/一直", ans_key: "C" },
+            { formal: "恳请", informal: "很希望/非常希望", ans_key: "A" },
+            { formal: "欲", informal: "想/要/希望", ans_key: "H" },
+            { formal: "给予", informal: "提供", ans_key: "G" },
+            { formal: "均", informal: "都/全部", ans_key: "I" },
+            { formal: "就", informal: "针对/对", ans_key: "F" },
+            { formal: "该", informal: "此/这个/这份", ans_key: "J" }
+        ],
+        // 三、组词成句 (答案要求精确匹配) [cite: 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+        'rearrange': [
+            { q: "贵方 / 接受 / 难以 / 我方 / 报价 / 的 /", ans: "我方难以接受贵方的报价" },
+            { q: "双方的利益 / 鉴于 / 优惠 / 给予 / 恳请 /", ans: "鉴于双方的利益，恳请给予优惠" },
+            { q: "女衬衫的报价 / 你方 / 我方 / 已收悉 / 对 /", ans: "你方对女衬衫的报价我方已收悉" },
+            { q: "超过 / 25万 / 总额 / 美元 / 我方的订单 /", ans: "我方的订单总额超过了25万美元" },
+            { q: "贵方 / 报价 / 低于 / 15% / 我们的 /", ans: "我们的报价低于贵方15%" },
+            { q: "在 / 原价的基础上 / 降价 / 希望 / 贵方 / 10% /", ans: "希望贵方能在原价的基础上降价10%" },
+            { q: "我们公司 / 一向 / 坚持 / 付款交单 / 采用 /", ans: "我们公司一向坚持，采用付款交单" },
+            { q: "理解 / 予以 / 恳请 / 贵方 /", ans: "恳请贵方予以理解" },
+            { q: "运输问题 / 与 / 贵方 / 商榷 / 我方希望 / 就 /", ans: "我方希望就运输问题与贵方商榷" },
+            { q: "不违背 / 前提下 / 在 / 经营原则的 / 我方 / 接受 /", ans: "在不违背经营原则的前提下，我方可以接受" }
+        ],
+        // 四、口语句子改写 (答案要求精确匹配) [cite: 23, 41]
+        'rewrite': [
+            { q: "你们那儿的客户一直都是这样做的。", ans: "贵地客户一贯如此操作" },
+            { q: "你报的价比我们原来的低得太多了。", ans: "你方报的价远低于我方原来的" },
+            { q: "我们想跟你们讨论运输的问题。", ans: "我方希望就运输问题与你方商榷" },
+            { q: "我们公司一直认为，低于一百万的订单必须全额预付。", ans: "我们公司一向坚持，若货款低于100万美元，需全额预付" },
+            { q: "我们觉得你们的报价太高了。", ans: "我方发现贵方的报价太高" },
+            { q: "我们很希望你们能够理解。", ans: "恳请贵方予以理解" },
+            { q: "如果货款超过100万美元，我们就能接受。", ans: "若货款超过100万美元，我方能接受" },
+            { q: "贵公司提供的牛仔裤价格比我们预期的贵几倍。", ans: "贵方提供的牛仔裤价格远高于我们的预期" },
+            { q: "我希望你方可以理解。", ans: "希望你方予以理解" },
+            { q: "我们会把信用证改为即期付款交单。", ans: "我方欲将信用证改为即期付款交单" }
+        ]
+    };
+
+    /**
+     * 洗牌函数 (Fisher-Yates shuffle)
+     * @param {Array} array 待打乱的数组
+     */
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    /**
+     * 渲染选择填空题
+     */
+    function renderSelectQuiz() {
+        shuffleArray(quizData.select);
+        const section = document.createElement('div');
+        section.className = 'section';
+        section.innerHTML = '<h2 class="section-title">一、选择填空 (Select the best option)</h2>';
+        
+        quizData.select.forEach((item, index) => {
+            const qNum = index + 1;
+            const options = [...item.options];
+            shuffleArray(options); // 打乱选项顺序
+            
+            let optionsHtml = '<div class="options">';
+            options.forEach(opt => {
+                const id = `select_${qNum}_${opt}`;
+                optionsHtml += `
+                    <label for="${id}">
+                        <input type="radio" id="${id}" name="select_${qNum}" value="${opt}" required>
+                        ${opt}
+                    </label>
+                `;
+            });
+            optionsHtml += '</div>';
+
+            section.innerHTML += `
+                <div class="question-item" data-q-type="select" data-q-num="${qNum}">
+                    <p class="question-text">${qNum}. ${item.q.replace('______', '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')}</p>
+                    ${optionsHtml}
+                </div>
+            `;
+        });
+        document.getElementById('quizForm').appendChild(section);
+    }
+
+    /**
+     * 渲染连线题
+     */
+    function renderMatchingQuiz() {
+        shuffleArray(quizData.matching);
+        const informalOptions = quizData.matching.map(item => item.informal);
+        shuffleArray(informalOptions); // 打乱右栏解释的顺序
+
+        const section = document.createElement('div');
+        section.className = 'section';
+        section.innerHTML = '<h2 class="section-title">二、连线 (Matching: Write the corresponding letter in the middle box)</h2>';
+        
+        let tableHtml = '<table class="matching-table"><tr><th>书面表达 (Formal)</th><th>连接</th><th>口语/解释 (Informal)</th></tr>';
+        
+        const informalMap = {}; // 用于存储右栏选项和对应的字母
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        informalOptions.forEach((opt, index) => {
+            const letter = alphabet[index];
+            informalMap[opt] = letter;
+        });
+
+        quizData.matching.forEach((item, index) => {
+            const qNum = index + 1;
+            const rightColumnIndex = informalOptions.findIndex(opt => opt === item.informal); // 找到正确解释在打乱数组中的位置
+            const rightColumnLetter = alphabet[rightColumnIndex];
+
+            tableHtml += `
+                <tr data-formal="${item.formal}" data-correct-letter="${rightColumnLetter}">
+                    <td>${qNum}. ${item.formal}</td>
+                    <td><input type="text" name="matching_${qNum}" maxlength="1" style="text-transform: uppercase;" required></td>
+                    <td>${rightColumnLetter}. ${informalOptions[rightColumnIndex]}</td>
+                </tr>
+            `;
+        });
+        tableHtml += '</table>';
+        
+        // 连线题的右栏选项要重新渲染，使其顺序是打乱的。
+        // 由于上面表格渲染时，右栏是按正确答案排的，这里需要重新构造一次连线题的表格
+        
+        const matchingData = quizData.matching.map(item => item.formal); // 左侧保持顺序
+        const matchingInformal = quizData.matching.map(item => item.informal);
+        shuffleArray(matchingInformal); // 右侧打乱顺序
+        
+        let matchingTableHtml = '<table class="matching-table">';
+        matchingTableHtml += '<tr><th>书面表达 (Formal)</th><th>填写字母</th><th>口语/解释 (Informal)</th></tr>';
+        
+        quizData.matching.forEach((item, index) => {
+            const qNum = index + 1;
+            const letter = alphabet[index];
+            
+            matchingTableHtml += `
+                <tr data-formal="${item.formal}" data-correct-answer="${informalMap[item.informal]}">
+                    <td>${qNum}. ${item.formal}</td>
+                    <td><input type="text" name="matching_${qNum}" maxlength="1" style="text-transform: uppercase;" required></td>
+                    <td>${letter}. ${informalOptions[index]}</td>
+                </tr>
+            `;
+        });
+
+        matchingTableHtml += '</table>';
+        
+        section.innerHTML += matchingTableHtml;
+        document.getElementById('quizForm').appendChild(section);
+    }
+    
+    /**
+     * 渲染组词成句和口语句子改写题
+     */
+    function renderTextQuizzes() {
+        // 三、组词成句 [cite: 9]
+        shuffleArray(quizData.rearrange);
+        let rearrangeHtml = '<h2 class="section-title">三、组词成句 (Rearrange the words to form a correct sentence)</h2>';
+        quizData.rearrange.forEach((item, index) => {
+            const qNum = index + 1;
+            rearrangeHtml += `
+                <div class="question-item" data-q-type="rearrange" data-q-num="${qNum}" data-correct-answer="${item.ans}">
+                    <p class="question-text">${qNum}. ${item.q}</p>
+                    <div class="input-group">
+                        <input type="text" name="rearrange_${qNum}" placeholder="请输入完整的句子" required>
+                    </div>
+                </div>
+            `;
+        });
+        const rearrangeSection = document.createElement('div');
+        rearrangeSection.className = 'section';
+        rearrangeSection.innerHTML = rearrangeHtml;
+        document.getElementById('quizForm').appendChild(rearrangeSection);
+
+        // 四、口语句子改写 [cite: 21]
+        shuffleArray(quizData.rewrite);
+        let rewriteHtml = '<h2 class="section-title">四、口语句子改写成书面表达 (Rewrite the informal sentence into formal business Chinese)</h2>';
+        quizData.rewrite.forEach((item, index) => {
+            const qNum = index + 1;
+            rewriteHtml += `
+                <div class="question-item" data-q-type="rewrite" data-q-num="${qNum}" data-correct-answer="${item.ans}">
+                    <p class="question-text">${qNum}. 口语: ${item.q}</p>
+                    <div class="input-group">
+                        <input type="text" name="rewrite_${qNum}" placeholder="请输入书面表达" required>
+                    </div>
+                </div>
+            `;
+        });
+        const rewriteSection = document.createElement('div');
+        rewriteSection.className = 'section';
+        rewriteSection.innerHTML = rewriteHtml;
+        document.getElementById('quizForm').appendChild(rewriteSection);
+    }
+
+    /**
+     * 初始化练习
+     */
+    function initializeQuiz() {
+        document.getElementById('quizForm').innerHTML = ''; // 清空现有题目
+        renderSelectQuiz();
+        renderMatchingQuiz();
+        renderTextQuizzes();
+        document.getElementById('results').style.display = 'none'; // 隐藏结果区
+    }
+
+    /**
+     * 检查答案
+     */
+    function checkAnswers() {
+        const form = document.getElementById('quizForm');
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '<h2 class="section-title">练习结果与参考答案</h2>';
+        resultsDiv.style.display = 'block';
+
+        let correctCount = 0;
+        let totalCount = 0;
+
+        // 辅助函数：标准化文本进行比较
+        const normalize = (text) => text.replace(/[\s\uff0c\uff1b\uff01\uff1f\uff1a\uff08\uff09]/g, '').toLowerCase().trim(); // 移除中文标点和空格
+
+        // 1. 选择填空
+        quizData.select.forEach((item, index) => {
+            const qNum = index + 1;
+            const selected = form.querySelector(`input[name="select_${qNum}"]:checked`);
+            const isCorrect = selected && selected.value === item.ans;
+            const statusClass = isCorrect ? 'correct' : 'incorrect';
+            const resultHtml = `
+                <div class="result-item">
+                    <span class="${statusClass}">【题${qNum} - 选择填空】</span> 
+                    <strong>${isCorrect ? '正确' : '错误'}</strong><br>
+                    题目: ${item.q}<br>
+                    你的回答: ${selected ? selected.value : '未作答'}<br>
+                    参考答案: ${item.ans}
+                </div>
+            `;
+            resultsDiv.innerHTML += resultHtml;
+            if (isCorrect) correctCount++;
+            totalCount++;
+        });
+
+        // 2. 连线题
+        const matchingRows = form.querySelectorAll('.matching-table tr:not(:first-child)');
+        matchingRows.forEach((row, index) => {
+            const qNum = index + 1;
+            const userAnswer = row.querySelector(`input[name="matching_${qNum}"]`).value.toUpperCase();
+            const informalPart = row.querySelector('td:last-child').innerText; // 获取右侧内容，如 "A. 很难/不能"
+            const formalPart = row.querySelector('td:first-child').innerText.replace(/^\d+\.\s*/, ''); // 获取左侧内容
+            
+            // 查找正确答案
+            const correctItem = quizData.matching.find(item => item.formal === formalPart);
+            
+            // 从右侧选项中找到用户输入字母对应的解释
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const informalOptions = Array.from(matchingRows).map(r => r.querySelector('td:last-child').innerText);
+            const userSelectedExplanation = informalOptions.find(opt => opt.startsWith(userAnswer + '.'));
+            
+            // 从 quizData 中找到用户选择的解释对应的正确 formal 词汇
+            let correctMatch = null;
+            if (userSelectedExplanation) {
+                const selectedExplanationText = userSelectedExplanation.replace(/^[A-Z]\.\s*/, '');
+                correctMatch = quizData.matching.find(item => item.informal === selectedExplanationText);
+            }
+
+            const isCorrect = correctMatch && normalize(correctMatch.formal) === normalize(formalPart);
+            const statusClass = isCorrect ? 'correct' : 'incorrect';
+            
+            const correctExplanation = quizData.matching.find(item => normalize(item.formal) === normalize(formalPart)).informal;
+
+            const resultHtml = `
+                <div class="result-item">
+                    <span class="${statusClass}">【题${qNum} - 连线】</span> 
+                    <strong>${isCorrect ? '正确' : '错误'}</strong><br>
+                    题目: ${formalPart}<br>
+                    你的回答: ${userAnswer}<br>
+                    正确对应: ${correctExplanation} (你应填写 ${alphabet[informalOptions.findIndex(opt => opt.includes(correctExplanation))]})
+                </div>
+            `;
+            resultsDiv.innerHTML += resultHtml;
+            if (isCorrect) correctCount++;
+            totalCount++;
+        });
+
+        // 3. 组词成句
+        quizData.rearrange.forEach((item, index) => {
+            const qNum = index + 1;
+            const input = form.querySelector(`input[name="rearrange_${qNum}"]`);
+            const userAnswer = input.value;
+            const isCorrect = normalize(userAnswer) === normalize(item.ans);
+            const statusClass = isCorrect ? 'correct' : 'incorrect';
+            const resultHtml = `
+                <div class="result-item">
+                    <span class="${statusClass}">【题${qNum} - 组词成句】</span> 
+                    <strong>${isCorrect ? '正确' : '错误'}</strong><br>
+                    词语: ${item.q}<br>
+                    你的回答: ${userAnswer}<br>
+                    参考答案: ${item.ans}
+                </div>
+            `;
+            resultsDiv.innerHTML += resultHtml;
+            if (isCorrect) correctCount++;
+            totalCount++;
+        });
+
+        // 4. 口语句子改写
+        quizData.rewrite.forEach((item, index) => {
+            const qNum = index + 1;
+            const input = form.querySelector(`input[name="rewrite_${qNum}"]`);
+            const userAnswer = input.value;
+            const isCorrect = normalize(userAnswer) === normalize(item.ans);
+            const statusClass = isCorrect ? 'correct' : 'incorrect';
+            const resultHtml = `
+                <div class="result-item">
+                    <span class="${statusClass}">【题${qNum} - 口语改写】</span> 
+                    <strong>${isCorrect ? '正确' : '错误'}</strong><br>
+                    口语: ${item.q}<br>
+                    你的回答: ${userAnswer}<br>
+                    参考答案: ${item.ans}
+                </div>
+            `;
+            resultsDiv.innerHTML += resultHtml;
+            if (isCorrect) correctCount++;
+            totalCount++;
+        });
+
+        // 最终得分
+        const finalScoreHtml = `
+            <h3>⭐ 最终得分：<span class="${correctCount >= totalCount * 0.8 ? 'correct' : 'incorrect'}">${correctCount} / ${totalCount}</span></h3>
+            <p>请仔细核对错误答案，巩固商务书面表达。</p>
+            <hr>
+        `;
+        resultsDiv.innerHTML = finalScoreHtml + resultsDiv.innerHTML;
+        
+        window.scrollTo(0, 0); // 滚动到页面顶部查看结果
+    }
+
+    // 页面加载完成后初始化
+    window.onload = initializeQuiz;
+
+</script>
+</body>
+</html>
